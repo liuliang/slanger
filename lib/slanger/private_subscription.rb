@@ -1,7 +1,7 @@
 module Slanger
   class PrivateSubscription < Subscription
     def subscribe
-      return handle_invalid_signature if auth == nil || auth && invalid_signature?
+      return handle_invalid_signature if auth.nil? || invalid_signature?
 
       Subscription.new(connection.socket, connection.socket_id, @msg).subscribe
     end
