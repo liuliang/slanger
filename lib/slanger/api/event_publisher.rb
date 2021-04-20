@@ -14,6 +14,7 @@ module Slanger
       private
 
       def publish_event(channel_id)
+        puts "publish_event: #{channel_id}-#{event.payload(channel_id)}"
         Slanger::Redis.publish(channel_id, event.payload(channel_id)).errback { |e|
           p [:publisherror, e]
         }
